@@ -1,0 +1,2565 @@
+<HTML>
+<HEAD>
+
+<STYLE TYPE="text/css"><!--
+.class1 A:link {text-decoration: none;}
+.class1 A:visited {text-decoration: none; }
+.class1 A:active {text-decoration: none; }
+.class1 A:hover {text-decoration: none; }
+
+.class2 A:link {text-decoration: none; color: #C0C0C0;}
+.class2 A:visited {text-decoration: none; color: #C0C0C0;}
+.class2 A:active {text-decoration: none; color: #C0C0C0; }
+.class2 A:hover {text-decoration: none; color: #0033CC;}
+-->
+</STYLE>
+<script>
+  (function(h,o,u,n,d) {
+    h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+    d=o.createElement(u);d.async=1;d.src=n
+    n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+  })(window,document,'script','https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js','DD_RUM')
+  window.DD_RUM.onReady(function() {
+    window.DD_RUM.init({
+      clientToken: 'pub26ab40f6b747b13411073068d99a6f1f',
+      applicationId: 'c3543121-49e7-450b-bbc1-e5cea33bc39b',
+      // `site` refers to the Datadog site parameter of your organization
+      // see https://docs.datadoghq.com/getting_started/site/
+      site: 'datadoghq.com',
+      service: 'ss.sga.aluno',
+      env: 'prod',
+      // Specify a version number to identify the deployed version of your application in Datadog
+      // version: '1.0.0',
+      sessionSampleRate: 50,
+      sessionReplaySampleRate: 25,
+      trackUserInteractions: true,
+      trackResources: true,
+      trackLongTasks: true,
+      defaultPrivacyLevel: 'mask-user-input',
+    });
+  })
+</script>
+<META CHARSET="utf-8">
+<META HTTP-EQUIV="content-language" CONTENT="pt-br">
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=UTF-8">
+<META HTTP-EQUIV="X-UA-Compatible" CONTENT="IE=edge, chrome=1">
+<META NAME="accept-language" CONTENT="pt-br">
+<META NAME="author" CONTENT="GTI - Gerência de Tecnologia da Informação">
+<META NAME="copyright" CONTENT="© 2019 GTI">
+<META NAME="description" CONTENT="Sistema de Gestão Acadêmica">
+<META NAME="keywords" CONTENT="Sistema de Gestão Acadêmica">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=0.25">
+<LINK ID="favicon" HREF="/sga4/SilverStream/Objectstore/Images/favicon.ico" REL="shortcut icon" TYPE="image/vnd.microsoft.icon">
+<LINK REL="stylesheet" TYPE="text/css" HREF="/sga4/SilverStream/Objectstore/General/smc-recursos.min.css">
+<SCRIPT LANGUAGE="javascript" SRC="/util/SilverStream/Objectstore/General/jquery-1.11.1.min.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" DEFER SRC="/util/SilverStream/Objectstore/General/menu.js"></SCRIPT>
+<TITLE>SGA - Nota/Freqüência</TITLE>
+
+<SCRIPT>
+<!--
+function com_sssw_AgpPage()
+{
+}
+function abrirRelatorio(iSeqPlano)
+{
+//	window.open("pgAln_PE_Relatorio.html?"+iSeqPlano, "novoRelatorio", "width=screen.availWidth,height=screen.availHeight,top=0,left=0,menubar=yes,toolbar=yes,resizable=yes,status=no,scrollbars=yes,location=no");
+	window.open("/sga4/SilverStream/Pages/pgPrf_PE_Relatorio.html?prSeqPlano="+iSeqPlano, "novoRelat", "width=830,height=650,top=0,left=0,menubar=yes,toolbar=yes,resizable=yes,status=no,scrollbars=yes,location=no");
+}
+
+function abreFaltas(iSeqTurma, iAno, iSem, SNom_disciplina)
+{	
+
+  var Link = "Link_" + SNom_disciplina;
+  
+  document.getElementById(Link).style.color = "#0033CC";
+  window.open("pgAln_Faltas.html?prSeqTurma="+iSeqTurma+"&prAno="+iAno+"&prSem="+iSem, "faltas", "width=830,height=650,top=0,left=0,menubar=no,toolbar=no,resizable=no,status=no,scrollbars=yes,location=no,screenX=220,screenY=0");
+
+}
+
+function msgSemFaltas(SNom_disciplina)
+{
+    var Link = "Link_" + SNom_disciplina;
+   document.getElementById(Link).style.color = "#0033CC";
+	alert("Nenhuma falta registrada.");
+}
+var Page=new com_sssw_AgpPage();
+function com_sssw_onBodyLoad(){
+}
+//-->
+</SCRIPT>
+</HEAD>
+<BODY VLINK="#E23E95" RIGHTMARGIN="0" LEFTMARGON="0" LEFTMARGIN="0" onload="com_sssw_onBodyLoad();" BGCOLOR="#FFFFFF" LINK="#6896BA" TOPMARGIN="0" ALINK="#0F9078">
+<P ALIGN=CENTER><TABLE BORDER="0" BGCOLOR="#FFFFFF" BORDERCOLOR="#808080" CELLPADDING="0" WIDTH="100%" ALIGN="LEFT" CELLSPACING="0"><TR><TD VALIGN="TOP" ALIGN="CENTER">
+<P><CENTER AGIGNORE><TABLE ALIGN=CENTER BORDER=0 BORDERCOLOR="#808080" CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+<TR>
+<TD VALIGN=TOP COLSPAN=3 WIDTH=100% CLASS="smc-sgagrad-tab-header">
+<P> <header class='smc-ribbon smc-sga-aluno-ribbon'> <nav class='navbar navbar-fixed-top smc-size-md-24 smc-size-xs-24 smc-size-sm-24 smc-size-lg-24 col-md-offset-2 col-sm-offset-1 col-lg-offset-2'> <a href='/./../../../sgaaluno4/SilverStream/Pages/pgALN_Noticias.html/' class='smc-aplicaco-logotipo smc-size-md-4 smc-size-xs-6 smc-size-sm-5 smc-size-lg-4'> <img class='img-responsive' src='/sga4/SilverStream/Objectstore/Images/smc-img-logo-sga-aluno.png' alt='SGA - Ir para a página inicial' title='SGA - Ir para a página inicial'> <img alt='Logotipo PUC Minas' src='/sga4/SilverStream/Objectstore/Images/Logo-PUCMinas.png'> </a> <div class='smc-size-md-4 smc-size-xs-12 smc-size-sm-4 smc-size-lg-4' id='divEspacamento' ></div> <div class='smc-size-md-16 smc-size-xs-24 smc-size-sm-12 smc-size-lg-15 smc-login navbar-custom-menu smc-sga-aluno-usuario' id='divAreaUsuario' > <div class='smc-size-md-12 smc-size-xs-22 smc-size-sm-16 smc-size-lg-14 smc-login-instituicao' id='divLoginAluno'> <span class='smc-size-xs-10 smc-estilo-sigla-instituicao'><b><i class="fa fa-user" aria-hidden="true"></i> Diogo Caribe Brunoro</b></span> <span class='smc-size-xs-10 smc-estilo-sigla-instituicao'>Matrícula: 855757 | Código de Pessoa: 1525102</span> <span class='smc-size-xs-10 smc-estilo-sigla-instituicao'>Engenharia de Software - CAMPUS CORAÇÃO EUCARÍSTICO - PMG - MANHÃ</span> </div> <ul class='nav navbar-nav smc-size-md-12 smc-size-xs-24 smc-size-sm-8 smc-size-lg-10'>
+ <li class='smc-sgagrad-Noticia'><A HREF="./../../../sco/SilverStream/Pages/pgALN_AreaNoticia.html" target="_top" title='Noticia'>Noticia</a> </li>
+ <li class='smc-sgagrad-Mensagens'><A HREF="./../../../sga4/SilverStream/Pages/pgSCO_Mensagem.html?tipos=3" title='Mensagens'>Mensagens</A></li>
+ <li class='smc-sgagrad-Configuracao'><A HREF="./../../../../sga4/SilverStream/Pages/pgAln_Preferencias.html" title='Configurações'></A></li><li class='smc-sgagrad-Ajuda'>
+<nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da ajuda' title='Menu da ajuda' tabindex='0' href='#Menu da ajuda' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Ajuda' href='./../../../../sga4/SilverStream/Pages/pgAln_Ajuda.html'>Ajuda</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Credenciais de Acesso' href='./../../../../sga4/SilverStream/Pages/pg_Credenciais.html'>Credenciais de Acesso</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Suporte Técnico' target='_blank' href='./../../../../sga4/SilverStream/Pages/pg_SuporteTecnicoNovaArq.html'>Suporte Técnico</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Credenciais de Acesso' target='_blank' href='./../../../../sga4/SilverStream/Pages/pgSGA_DadosNavegacao.html'>Dados da Navegação</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</li>
+
+ <li class='smc-sgagrad-Sair'><A HREF="./../../../../sgaaluno4/SilverStream/Pages/pg_LogOut.html" title='Sair'>Sair</A></li> </ul> </div>                </nav> <nav><aside class='smc-menu-responsivo-orientation-horizontal smc-menu-responsivo'> <section class='sidebar smc-menu-dinamico'> <div class='smc-dynamic-menu'> <ul class='smc-menu-dinamico-principal sidebar-menu'> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Serviços Acadêmicos' alt='Serviços Acadêmicos' href='#' onclick='abrirMenuSuperior(this)'>Serviços Acadêmicos</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sga4/SilverStream/Pages/pg_Credenciais.html" class="id1">Credenciais de Acesso</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_ArquivosPostados.html" class="id1">Arquivos Semestres Anteriores</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_EmissaoDocumentos.html" target="_top" class="id1">Emissão de Documentos</A></li> <li><A HREF="./../../../sgaaluno4/SilverStream/Pages/pgAln_PmInstrucoesSPE.html" target="_top" class="id1">Matrícula</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/fsAln_Seminarios.html" target="_top" class="id1">Seminários</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_AcessoEAD.html" target="_top" class="id1">Acesso PUC Minas Virtual</A></li> <li><A HREF="http://www.pucminas.br/biblioteca/sumarios" target ="sumarios" target="_top" class="id1">Serviço de Sumários Digitais de Periódicos</A></li> <li><A HREF="./../../../../sga4/SilverStream/Pages/pg_SuporteTecnicoNovaArq.html" target='_blank' class="id1">Solicitação de Serviços</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_TransfInt_Principal.html" class="id1">Transferência Âmbito PUC Minas</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Cadastros' alt='Cadastros' href='#' onclick='abrirMenuSuperior(this)'>Cadastros</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_DadosCadastrais.html" target="_top" class="id1">Atualização Cadastral</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_Atl_AlunoEsporte.html" target="_top" class="id1">Cadastro de Atletas</A></li> <li><A HREF="http://www.sistemas.pucminas.br/gac/SilverStream/Pages/pgLogin.html" target="_new" class="id1">Prontuário Eletrônico do Paciente (PEP)</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Documentos Institucionais' alt='Documentos Institucionais' href='#' onclick='abrirMenuSuperior(this)'>Documentos Institucionais</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="https://webdavprod.pucminas.br/webdav/sistemas/sga/Documentos/portaria_043_2008.pdf" target="_new" class="id1">Destaque Acadêmico</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_DocumentoCurso.html" target="_top" class="id1">Documentos do Curso</A></li> <li><A HREF="https://webdavprod.pucminas.br/webdav/sistemas/sga/Documentos/CONTRATO_PRESTACAO_SERVICOS_EDUCACIONAIS_CALOUROS2010.pdf" target="_new" class="id1">Contrato de Prestação de Serviços</A></li> <li><A HREF="https://webdavprod.pucminas.br/webdav/sistemas/sga/Documentos/Estatuto_da_Universidade_2016.pdf" target="_new" class="id1">Estatuto da Universidade</A></li> <li><A HREF="https://www.pucminas.br/guia-do-aluno/guia-pratico/Paginas/default.aspx" target="_new" class="id1">Guia do Aluno</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgINTR_CTD_VisualizarPagina.html?codID=2fd60a5f-094d-451b-a00a-79273b97bf66" target="_top" class="id1">Normas Acadêmicas</A></li> <li><A HREF="https://webdavprod.pucminas.br/webdav/sistemas/sga/Documentos/Regimento_Geral_2015.pdf" target="_new" class="id1">Regimento Geral</A></li> <li><A HREF="./../../../intr/SilverStream/Pages/pgCAD_TermoCienciaLeitura.html" target="_new" class="id1">Política de Segurança da Informação</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pg_TermosCienciaAderidos.html" target="_top" class="id1">Termos de Ciência Aderidos</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Financeiro' alt='Financeiro' href='#' onclick='abrirMenuSuperior(this)'>Financeiro</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sgaaluno4/SilverStream/Pages/pgAln_Contratos.html" target="_top" class="id1">Adesão ao Contrato de Prestação de Serviços Educacionais</A></li> <li><A HREF="./../../../gra/SilverStream/Pages/pgBlt_TitulosAbertos2.html" target="_top" class="id1">Emissão do Boleto Bancário</A></li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Negociação de débitos' alt='Negociação de débitos' href='#' onclick='abrirMenuInterno(this)'>Negociação de débitos</a> <ul class='smc-menu-N3 smc-menu-submenu avalistas' aria-expanded='false' style='display: none;'> <li><A HREF="./../../../gra/SilverStream/Pages/pgCartaoWeb.html?tipParcela=0" target="_top" class="id1">Parcela(s)</A></li> <li><A HREF="./../../../gra/SilverStream/Pages/pgCartaoWeb.html?tipParcela=1" target="_top" class="id1">Financiamento</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Negociação por boleto com avalista' alt='Negociação por boleto com avalista' href='#' onclick='abrirMenuInterno(this)'>Negociação por boleto com avalista</a> <ul class='smc-menu-N3 smc-menu-submenu avalistas' aria-expanded='false' style='display: none;'> <li><A HREF="./../../../gra/SilverStream/Pages/pgSolicitacaoNegociacaoBoletoFiador.html" target="_top" class="id1">Solicitar negociação</A></li> <li><A HREF="./../../../gra/SilverStream/Pages/pgCartaoWeb.html?tipParcela=-1" target="_top" class="id1">Efetivar negociação</A></li> </ul> </li> <li><A HREF="./../../../gra/SilverStream/Pages/pgAln_DeclaracaoPagamento.html" target="_top" class="id1">Declaração de Pagamento</A></li> <li><A HREF="./../../../gra/SilverStream/Pages/pgAln_DeclaracaoQuitacaoAnual.html" target="_top" class="id1">Declaração de Quitação Anual</A></li> <li><A HREF="./../../../gra/SilverStream/Pages/pgNotaFiscal.html" target="_top" class="id1">Nota Fiscal de Serviço</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Bolsas' alt='Bolsas' href='#' onclick='abrirMenuSuperior(this)'>Bolsas</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../gra/SilverStream/Pages/pgAdsBolsa_Lista.html" target="_top" class="id1">Adesão ao Termo de Bolsa</A></li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Solicitação' alt='Solicitação' href='#' onclick='abrirMenuInterno(this)'>Solicitação</a> <ul class='smc-menu-N3 smc-menu-submenu bolsas' aria-expanded='false' style='display: none;'> <li><A HREF="https://www.sistemas.pucminas.br/gra/SilverStream/Pages/pgGrFam_Principal2.html" target="_top" class="id1">Bolsa Grupo Familiar</A></li> <li><A HREF="https://www.sistemas.pucminas.br/gra/SilverStream/Pages/pgRequerimento_Bolsas.html?tip_requerimento=10" target="_top" class="id1">Bolsa Parceiro PUC Minas</A></li> <li><A HREF="https://www.sistemas.pucminas.br/gra/SilverStream/Pages/pgRequerimento_Bolsas.html?tip_requerimento=11" target="_top" class="id1">Bolsa Sênior</A></li> </ul> </li> <li><A HREF="https://webdavprod.pucminas.br/webdav/sistemas/sga/aviso_prouni/Informacoes_aos_bolsistas_Prouni.pdf" target="_new" class="id1">Informações aos bolsistas PROUNI</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Extensão' alt='Extensão' href='#' onclick='abrirMenuSuperior(this)'>Extensão</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAcessoNovoSGE.html" target='_blank' class="id1">Sistema de Atividades e Práticas Curriculares</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='PUC Carreiras' alt='PUC Carreiras' href='#' onclick='abrirMenuSuperior(this)'>PUC Carreiras</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_AcessoCarreiras.html" target='_blank' class="id1">Serviços de Carreiras/Vagas</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAcessoNovoSGE.html" target='_blank' class="id1">Sistema de Atividades e Práticas Curriculares</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='Formaturas' alt='Formaturas' href='#' onclick='abrirMenuSuperior(this)'>Formaturas</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="https://www.pucminas.br/formaturas" target="_blank" class="id1">Site de Formaturas</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_MensagemPendenciaEstagio.html" target="_top" class="id1">Requerimento de Formatura</A></li> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_CadastroComissaoFormatura.html" target="_top" class="id1">Comissão de Formatura</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='CPA' alt='CPA' href='#' onclick='abrirMenuSuperior(this)'>CPA</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="https://www.pucminas.br/cpa/Paginas/Apresentacao.aspx" target="_blank" class="id1">Site da CPA</A></li> </ul> </li> <li class='smc-menu-dinamico-link-submenu' data-menu-id=''><a title='NAI' alt='NAI' href='#' onclick='abrirMenuSuperior(this)'>NAI</a> <ul class='smc-menu-N2 smc-menu-submenu' aria-expanded='false'> <li><A HREF="./../../../sga4/SilverStream/Pages/pgAln_Quest_Necessidades_Especiais.html" target="_blank" class="id1">Questionário</A></li> </ul> </li> </ul> </div> </section> </aside></nav> </header>
+</TD>
+</TR>
+<TR>
+<TD VALIGN=TOP ROWSPAN=4 WIDTH=10%>
+<P><span class='smc-sgagrad-menu-button-abrir'onclick='openNav()'>&#9776;</span><span id='idclose' class='smc-sgagrad-menu-button-fechar' style='' onclick='closeNav()'>X</span><script>
+function openNav() { $('.sidenav').css('width', '33%'); $('#idclose').show(); $('#idclose').css('width', '33%');$('#idclose').css('margin-left', '33%'); $('#idclose').css('position', 'absolute'); }
+function closeNav() { $('#idclose').hide();$('.sidenav' ).css('width', '0px'); }
+</script> 
+<SCRIPT language='JavaScript' SRC='/sga4/SilverStream/Objectstore/General/smc-contextcontrol.js'>
+</SCRIPT>
+<SCRIPT>
+  function hideAll(){
+ 	hideSubMenu();
+	var drops = $('.smc-sgagrad-engrenagem-itens');
+	for(var x = 0; x < drops.length; x++)
+	{ 
+		var menu = $(drops[x]);
+     if(menu.is(':visible')){ 
+         menu.hide();
+         menu.attr('aria-expanded','false');
+ 	  }
+	}
+}
+
+ function abrirMenu(e){ 
+    	var dropdown = $(e.parentElement).parents('.smc-sgagrad-estrutura-engrenagem');
+     	var menu = $(dropdown.context).children('.smc-sgagrad-engrenagem-itens');
+     	if(menu.is(':visible')){
+    		hideSubMenu();
+    		menu.hide(); 
+    		menu.attr('aria-expanded', 'false'); 
+    	}
+    	else {
+       var offsetButton = $(e).offset();
+       var scrollTop = $(window).scrollTop();
+       var windowHeight = $(window).height();
+       var relativeOffset = offsetButton.top - scrollTop;
+       hideAll();
+       menu.show(); 
+       menu.attr('aria-expanded', 'true'); 
+       newPos = new Object();
+       newPos.left = offsetButton.left - menu.width();
+       if(relativeOffset > windowHeight/1.5){
+         newPos.top = offsetButton.top - menu.height() - 20;
+       }else{
+         newPos.top = offsetButton.top;
+       }
+       menu.offset(newPos)
+    	}
+   }
+
+ function hideSuperiorAll(){
+ var drops = $('.smc-menu-N2');
+ for(var x = 0; x < drops.length; x++)
+ { 
+     var menu = $(drops[x]);
+     if(menu.is(':visible')){ 
+         menu.hide();
+         menu.attr('aria-expanded', 'false');
+ 	  }
+ }
+ }
+
+ function hideInternoAll(){
+ var drops = $('.smc-menu-N3');
+ for(var x = 0; x < drops.length; x++)
+ { 
+ $(drops[x]).hide();
+ }
+ }
+
+ function abrirMenuSuperior(e){ 
+    var dropdown = $(e.parentElement).parents('.smc-menu-dinamico-link-submenu');
+      var menu = $(dropdown.context).children('.smc-menu-N2');
+      if(menu.is(':visible')){
+         menu.hide();
+         menu.attr('aria-expanded','false');
+     }
+     else {
+         hideSuperiorAll();
+         hideInternoAll();
+         menu.show();
+   	  menu.attr('aria-expanded','true');
+     }
+ }
+
+ function abrirMenuInterno(e){ 
+    var dropdown = $(e.parentElement).parents('.smc-menu-dinamico-link-submenu');
+      var menu = $(dropdown.context).children('.smc-menu-N3');
+      if(menu.is(':visible')){
+         hideInternoAll();
+         menu.hide();
+         menu.attr('aria-expanded','false');
+     }
+     else {
+         hideInternoAll();
+         menu.show();
+   	  menu.attr('aria-expanded','true');
+     }
+ }
+
+ function abrirSubMenu(e){ 
+     var dropdown = $(e.parentElement).parents('.smc-sgagrad-dropdown-nivel2');
+       var menu = $(dropdown.context).children('.dropdown-menu-grupo');
+         if(menu.is(':visible')){
+          menu.hide();
+          menu.attr('aria-expanded', 'false');
+      }
+      else {
+      		var offsetButton = $(e).offset();
+       	var scrollTop = $(window).scrollTop();
+       	var windowHeight = $(window).height();
+       	var relativeOffset = offsetButton.top - scrollTop;
+       	hideSubMenu();
+       	menu.show(); 
+       	newPos = new Object();
+       	if(relativeOffset > windowHeight/1.5){
+         		newPos.top = (offsetButton.top-10) - menu.height();
+       	}else{
+         		newPos.top = (offsetButton.top+20);
+       	}
+       	menu.offset(newPos)
+       	menu.attr('aria-expanded', 'true');
+      }
+  }
+
+  function hideSubMenu(){
+  var drops = $('.dropdown-menu-grupo');
+  for(var x = 0; x < drops.length; x++)
+  { 
+      var menu = $(drops[x]);
+      if(menu.is(':visible')){ 
+          menu.hide();
+          menu.attr('aria-expanded', 'false');
+       }
+  }
+ }
+
+ $(document).ready(function (){ 
+ $(window).scroll(function() {
+ hideAll()
+ })
+ $('div').scroll(function() {
+ 	hideAll()
+  });
+ });
+
+ $(document).click(function(e){
+ if (!$(e.target.parentElement).closest('.smc-sgagrad-estrutura-engrenagem').length)
+ {
+ hideAll()
+ }
+ if (!$(e.target.parentElement).closest('.smc-menu-dinamico-link-submenu').length)
+ {
+ 	hideSuperiorAll()
+ }
+ })
+</SCRIPT>
+<div class='sidenav'>
+<div class='smc-sgagrad-lista-disciplinas smc-sgagrad-lista-disciplinas-aluno'> <h2>Minhas Disciplinas</h2>
+<div class='TurmaSGA' ><span>TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132100' title='Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132100 ' tabindex='0' href='#Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132100&seqTurmaFormatado=3132100&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132101</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132101' title='Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132101 ' tabindex='0' href='#Menu da disciplina TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132101' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3132101&seqTurmaFormatado=3132101&nomTurma=TEORIA DOS GRAFOS E COMPUTABILIDADE&seqPlano=411837&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>PROJETO DE SOFTWARE - 3133100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina PROJETO DE SOFTWARE - 3133100' title='Menu da disciplina PROJETO DE SOFTWARE - 3133100 ' tabindex='0' href='#Menu da disciplina PROJETO DE SOFTWARE - 3133100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3133100&seqTurmaFormatado=3133100&nomTurma=PROJETO DE SOFTWARE&seqPlano=411838&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134100' title='Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134100 ' tabindex='0' href='#Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134100&seqTurmaFormatado=3134100&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134101</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134101' title='Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134101 ' tabindex='0' href='#Menu da disciplina LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134101' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3134101&seqTurmaFormatado=3134101&nomTurma=LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE&seqPlano=411839&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>REDES DE COMPUTADORES - 3138100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina REDES DE COMPUTADORES - 3138100' title='Menu da disciplina REDES DE COMPUTADORES - 3138100 ' tabindex='0' href='#Menu da disciplina REDES DE COMPUTADORES - 3138100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3138100&seqTurmaFormatado=3138100&nomTurma=REDES DE COMPUTADORES&seqPlano=411840&sitGrupo=0&seq_grupo_turma=null&page=8'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170100' title='Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170100 ' tabindex='0' href='#Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170100&seqTurmaFormatado=3170100&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170102</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170102' title='Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170102 ' tabindex='0' href='#Menu da disciplina TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170102' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3170102&seqTurmaFormatado=3170102&nomTurma=TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE&seqPlano=411841&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>INTERAÇÃO HUMANO-COMPUTADOR - 3172100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina INTERAÇÃO HUMANO-COMPUTADOR - 3172100' title='Menu da disciplina INTERAÇÃO HUMANO-COMPUTADOR - 3172100 ' tabindex='0' href='#Menu da disciplina INTERAÇÃO HUMANO-COMPUTADOR - 3172100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=3172100&seqTurmaFormatado=3172100&nomTurma=INTERAÇÃO HUMANO-COMPUTADOR&seqPlano=411842&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>DESENVOLVIMENTO WEB FULL STACK - 4139100</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139100' title='Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139100 ' tabindex='0' href='#Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139100' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=7'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139100&seqTurmaFormatado=4139100&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=0&seq_grupo_turma=null&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+<div class='TurmaSGA' ><span>DESENVOLVIMENTO WEB FULL STACK - 4139101</span><nav>
+<ul>
+<li class='smc-sgagrad-estrutura-engrenagem' data-menu-id=''>
+<a class='smc-sgagrad-engrenagem'alt='Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139101' title='Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139101 ' tabindex='0' href='#Menu da disciplina DESENVOLVIMENTO WEB FULL STACK - 4139101' onclick='abrirMenu(this);'></a><ul class='smc-sgagrad-engrenagem-itens' aria-expanded='false'>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Cronograma' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=0'>Cronograma</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Provas' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=1'>Entrega de Provas</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Entrega de Trabalhos' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=2'>Entrega de Trabalhos</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Material Didático' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=3'>Material Didático</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Plano de Ensino' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=4'>Plano de Ensino</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Enviar Mensagem no SGA e/ou E-mail' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=5'>Enviar Mensagem no SGA e/ou E-mail</A>
+          </li>
+
+          <li class='smc-button' data-control='button' data-type='smc-button'>
+            <a class='com_efeito' title='Fórum' href='./../../../sga4/SilverStream/Pages/pgAln_Disciplinas.html?seqTurma=4139101&seqTurmaFormatado=4139101&nomTurma=DESENVOLVIMENTO WEB FULL STACK&seqPlano=406185&sitGrupo=1&seq_grupo_turma=371899&page=6'>Fórum</A>
+          </li>
+</ul>
+</li>
+</ul>
+</nav>
+</div> 
+	</div>
+	</div>
+</TD>
+<TD VALIGN=TOP WIDTH=80%>
+<P><h1>Disciplinas em Curso</h1>
+</TD>
+<TD VALIGN=TOP WIDTH=10%>
+<P></TD>
+</TR>
+<TR>
+<TD ALIGN=RIGHT VALIGN=TOP WIDTH=80%>
+<P><TABLE BORDER="0" CELLSPACING="1" CELLPADDING="0" BORDERCOLOR="#808080" WIDTH="100%"><TR><TD VALIGN="TOP">
+<P><div class='smc-sga-mensagem smc-sga-mensagem-informativa smc-size-md-24 smc-size-xs-24 smc-size-sm-24 smc-size-lg-24'><p>A apuração da freqüência final será feita com base no número total de aulas apuradas no semestre, caso este número seja superior à carga horária prevista para a disciplina. Sendo assim, o percentual de faltas exibido poderá ser alterado até o final do semestre letivo.</p><p>Para visualizar as faltas, clique na palavra faltas  à frente de cada disciplina.</p></div>
+</TD></TR></TABLE></TD>
+<TD VALIGN=TOP WIDTH=10%>
+<P></TD>
+</TR>
+<TR>
+<TD ALIGN=CENTER VALIGN=TOP WIDTH=80%>
+<P><TABLE BORDER="0" CELLSPACING="1" CELLPADDING="0" BORDERCOLOR="#808080" WIDTH="100%"><TR><TD VALIGN="TOP">
+<P><FONT SIZE=3 FACE=""><SPAN STYLE="font-size:16;"><h2>Disciplinas em Curso</h2>
+</SPAN></FONT></TD></TR><TR><TD VALIGN="TOP">
+<P><SPAN CLASS="class1"><TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+DESENVOLVIMENTO WEB FULL STACK - 4139.1.01</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+40 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+0 
+&nbsp; <a  ID='Link_4139101'  href='javascript:msgSemFaltas("4139101")'>falta(s)</a> 
+ ( 0.00 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+<A href="http://ead01.virtual.pucminas.br/oem/portal.nsf" target="ov"><IMG SRC='../ObjectStore/Images/imgEAD.gif' ALT="Ensino à Distância." BORDER='0'></A> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 07/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Quiz sobre experiência do usuário                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+4.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 14/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Quiz - Requisitos de Sosftware                    </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+3.50</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 14/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Quiz - Design Centrado no Usuário                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+4.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Quiz - Scrum                                      </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+3.50</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 1 (20 pontos)                               </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 28/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Quiz - Devops                                     </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+3.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 02/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 2 (20 pontos)                               </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 30/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 3 (20 pontos)                               </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 07/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova substitutiva (20 pontos)                    </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 98.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+INTERAÇÃO HUMANO-COMPUTADOR - 3172.1.00</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+80 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+2 
+&nbsp; <a ID='Link_3172100' href='javascript:abreFaltas(3172100, 2025, 2, "3172100")'>falta(s)</a> 
+ ( 2.50 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 27/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prática Extensionista                             </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 27/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> ADA                                               </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 02/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 1                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	16.67 
+ 	&nbsp;( 83 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	Nota atualizada em: 02/09/2025  23:01:00 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 23/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Debate Estruturado                                </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 07/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 2                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 11/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 3                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 09/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 4                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 100.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	17.00 
+ 	&nbsp;( 17 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+LABORATÓRIO DE DESENVOLVIMENTO DE SOFTWARE - 3134.1.01</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+40 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+0 
+&nbsp; <a  ID='Link_3134101'  href='javascript:msgSemFaltas("3134101")'>falta(s)</a> 
+ ( 0.00 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 15/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB01 - SPRINT 01                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+4.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB01 - SPRINT 02                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+4.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 29/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB01 - SPRINT 03                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+7.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 11/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB02 - SPRINT 01                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 18/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB02 - SPRINT 02                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 25/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB02 - SPRINT 03                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 09/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB03 - SPRINT 01                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 16/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB03 - SPRINT 02                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 23/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB03 - SPRINT 03                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 30/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB04 - SPRINT 01                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 06/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB04 - SPRINT 02                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 13/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB04 - SPRINT 03                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 04/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB05 - SPRINT 01                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 11/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> LAB05 - SPRINT 02                                 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 95.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+PROJETO DE SOFTWARE - 3133.1.00</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+80 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+0 
+&nbsp; <a  ID='Link_3133100'  href='javascript:msgSemFaltas("3133100")'>falta(s)</a> 
+ ( 0.00 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 17/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 1 - The Big Ball of Mud - 1 pt             </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 24/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 2 - Microservices - 1 pt                   </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 31/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 3 - No Silver Buller - 1 pt                </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 07/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 4 - On the Criteria To Be Used in Decomposi</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 14/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 5 - Software Architecture: A Roadmap - 1 pt</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 18/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> AV1 - 25 pts                                      </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+25.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 6 - Hotspot Patterns: The Formal Definition</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 28/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 7 - Strategic Design and Domain-Driven Desi</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 05/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 8 - Managing Technical Debt – 1 pt         </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 12/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 9 - Documenting Architecture Decisions – 1 </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 19/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Artigo 10 - Hexagonal Architecture – 1 pt         </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 35.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+REDES DE COMPUTADORES - 3138.1.00</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+80 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+2 
+&nbsp; <a ID='Link_3138100' href='javascript:abreFaltas(3138100, 2025, 2, "3138100")'>falta(s)</a> 
+ ( 2.50 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 10/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Lista de Exercícios 01                            </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 5.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+TEORIA DOS GRAFOS E COMPUTABILIDADE - 3132.1.01</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+80 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+0 
+&nbsp; <a  ID='Link_3132101'  href='javascript:msgSemFaltas("3132101")'>falta(s)</a> 
+ ( 0.00 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 5 - TGC - Regras de Inferência              </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+2.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 2 - TGC - Teoria dos conjuntos              </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+3.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 4 - TGC - Lógica de predicados              </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 3 - TGC - Lógica proposicional              </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+2.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 7 - TGC - Verificação de programas          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+2.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 1 - TGC - Fundamentos                       </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+4.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Teste 6 - TGC - Pensamento dedutivo e indutivo    </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+1.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 12/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 1                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 31/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 2                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 09/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Prova 3                                           </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+20.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 75.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+<TABLE CLASS='smc-sgagrad-agrupamento-primario' BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100% HEIGHT=7> 
+<TR> 
+<TD VALIGN=TOP NOWRAP WIDTH=60%><P> 
+TRABALHO INTERDISCIPLINAR: APLICAÇÕES PARA SUSTENTABILIDADE - 3170.1.02</TD> 
+<TD VALIGN=TOP NOWRAP> 
+<P> 
+40 
+aula(s)  
+</TD> 
+<TD VALIGN=TOP NOWRAP><P> 
+0 
+&nbsp; <a  ID='Link_3170102'  href='javascript:msgSemFaltas("3170102")'>falta(s)</a> 
+ ( 0.00 % )  
+</TD> 
+<TD ALIGN=CENTER VALIGN=TOP NOWRAP WIDTH=50><P> 
+</SPAN> 
+</TD> 
+</TR> 
+</TR> 
+</TABLE> 
+<TABLE CLASS="smc-grid" CELLSPACING="1" BORDER="0" CELLPADDING="0" WIDTH="100%">
+<TR> 
+<TD>Data 
+</TD> 
+<TD>Atividade 
+</TD> 
+<TD>Valor 
+</TD> 
+<TD>Nota 
+</TD> 
+<TD>Data Atualização 
+</TD> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 29/08/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Sprint 1                                          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+10.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 26/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Sprint 2                                          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+15.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 24/10/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Sprint 3                                          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+15.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 21/11/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Sprint 4                                          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+15.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 05/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Relatório da PROEX                                </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+5.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 12/12/2025   
+ 	</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Sprint 5                                          </SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP" WIDTH="10%"><P> 
+ 	<SPAN STYLE="font-size:11;">
+40.00</SPAN>
+ </TD> 
+ <TD NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	&nbsp;(  -  % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+ <TR> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="10%"> 
+ 	<SPAN STYLE="font-size:11;"> 03/09/2025   
+ 	</SPAN>
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="50%"> 
+ <P> 
+ 	<SPAN STYLE="font-size:11;"> Somatório das Avaliações
+</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP" WIDTH="70"><P> 
+ 	<SPAN STYLE="font-size:11;">
+ 	
+ 100.00</SPAN> 
+ </TD> 
+ <TD CLASS="smc-grid-totalizador" NOWRAP VALIGN="TOP"><P> 
+ 	<SPAN STYLE="font-size:11;">
+  
+ 	0.00 
+ 	&nbsp;( 0 % )  
+ <TD WIDTH="20%"> 
+ 	<SPAN STYLE="font-size:11;">
+ 	 
+ 	</SPAN> 
+ </TD> 
+ 	</SPAN> 
+ </TD> 
+ </TR> 
+</TABLE>
+
+</SPAN></TD></TR></TABLE></TD>
+<TD VALIGN=TOP WIDTH=10%>
+<P></TD>
+</TR>
+<TR>
+<TD VALIGN=TOP WIDTH=80%>
+<P></TD>
+<TD VALIGN=TOP WIDTH=10%>
+<P></TD>
+</TR>
+<TR>
+<TD VALIGN=TOP COLSPAN=3 WIDTH=100%>
+<P><footer class='smc-footer-centro footer smc-size-md-20 smc-size-xs-24 smc-size-sm-22 smc-size-lg-20 col-md-offset-2 col-sm-offset-1 col-lg-offset-2'><div class='smc-footer-conteudo container'><div class='smc-footer-copyright'>© 2019 - Todos direitos reservados.</div><div class='smc-footer-logo-gti' title='Gerência de Tecnologia da Informação'></div><div class='smc-footer-logo-smc' title='Sociedade Mineira de Cultura'></div></div></footer>
+</TD>
+</TR>
+</TABLE></CENTER AGIGNORE></TD></TR></TABLE>
+<P ALIGN=CENTER>
+<P>
+</BODY>
+</HTML>
